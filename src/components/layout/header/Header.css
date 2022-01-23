@@ -1,0 +1,12 @@
+.flexbox-container {
+    display: flex;
+}
+
+.gap{
+    gap: 20px;
+}
+
+.part{
+    display: flex;
+    gap: 50px;
+}
