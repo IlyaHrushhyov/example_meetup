@@ -1,12 +1,5 @@
 .button{
-    background-color: white;
-    border-color: black;
     text-align: center;
-    color: black;
     height: 40px;
-}
-
-.button:hover{
-    border-color: white;
-    background-color: white;
+    color: 2px solid black;
 }
