@@ -25,9 +25,11 @@ const Sidebar: FC<SidebarProps> = () => {
     const [subCategories, setSubCategories] = useState<Array<subCategoryModel>>([]);
 
     useEffect(() =>{
-        categoryService.getAllCategories().then((response)=>setCategories(response.data));
-        subCategoryService.getAllSubCategories().then((response)=>setSubCategories(response.data));
-    })
+        Promise.all([ 
+            subCategoryService.getAllSubCategories().then((response)=>setSubCategories(response.data)),
+            categoryService.getAllCategories().then((response)=>setCategories(response.data))
+        ])
+    }, [])
     return (
     <Wrapper>
         <div>

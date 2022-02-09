@@ -3,6 +3,7 @@ import Ract, { FC } from 'react'
 import Header from './header/Header';
 import Sidebar from './sidebar/Sidebar';
 import './Layout.css'
+import Center from './center/Center';
 
 const Layout: FC = ({ children }) => {
     return (
@@ -15,7 +16,7 @@ const Layout: FC = ({ children }) => {
                     <Sidebar/>
                 </Grid>
                 <Grid item xs={10.5}>
-                    
+                    <Center/>
                 </Grid>
             </Grid>
         </> 

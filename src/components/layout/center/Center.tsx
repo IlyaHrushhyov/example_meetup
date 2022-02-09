@@ -1,10 +1,19 @@
-import { Box, Grid } from '@mui/material';
-import Ract, { FC } from 'react'
+import Ract, { FC, useEffect, useState } from 'react'
+import ListOfLots from './LotCard/ListOfLots';
+import {lotService} from '../../../services/lot-service'
+import lotModel from '../../../models/lotModel';
 
 const Center: FC = () => {
+    const [listOfLots, setLots] = useState<Array<lotModel>>([]);
+
+    useEffect(() =>{
+            lotService.getAllLots().then((response)=>setLots(response.data));
+    }, []);
     return (
         <>
-            
+            <div>
+                <ListOfLots lots={listOfLots}/>
+            </div>
         </> 
     );
 }

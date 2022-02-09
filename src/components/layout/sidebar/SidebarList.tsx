@@ -35,22 +35,16 @@ export default function PinnedSubheaderList(props: Props) {
           maxHeight: 300,
           '& ul': { padding: 0 },
         }}
-        // subheader={<li />}
-        // subheader={
-        //   <ListSubheader component="div" id="nested-list-subheader">
-        //     {/* Nested List Items */}
-        //   </ListSubheader>
-        // }
       >
 
         {props.categories.map((item) => (
-          //<li key={`li-${item.id}`}>
-                <ListItem key={`listItem-${item.id}`} onClick={() =>handleClick(item.id)}>
-                  <ListItemButton>
+                <ListItem key={`listItem-${item.id}`}>
+                  
                   <div>
+                  <ListItemButton onClick={() => handleClick(item.id)}>
                     <ListItemText key={`listItemText-${item.id}`} primary={`${item.name}`}>
-
                     </ListItemText>
+                  </ListItemButton>
                     {props.subCategories.map((subCategory) =>(
                       <Collapse in={openId === item.id} timeout="auto" unmountOnExit>
                         <List component="div" disablePadding>
@@ -60,12 +54,8 @@ export default function PinnedSubheaderList(props: Props) {
                         </List>
                     </Collapse>
                     ))}
-                    
                     </div>
-                  </ListItemButton>
-                 
                 </ListItem>
-          //</li>
         ))}
       </List>
     </>
