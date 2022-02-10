@@ -10,7 +10,7 @@ interface Topic{
    topicName:string;
 }
 
-export default function RowRadioButtonsGroup(props: Topic) {
+const RowRadioButtonsGroup = (props: Topic) => {
   return (
     <FormControl>
       <FormLabel id="demo-row-radio-buttons-group-label">{props.topicName}</FormLabel>
@@ -26,3 +26,5 @@ export default function RowRadioButtonsGroup(props: Topic) {
     </FormControl>
   );
 }
+
+export default RowRadioButtonsGroup;

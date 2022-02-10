@@ -3,12 +3,13 @@ import { Wrapper } from './Card.styled';
 import lotModel from '../../../../models/lotModel';
 import img1 from '../../../../images/logoef.png';
 import img2 from '../../../../images/Killing_customers.jpg';
+import { DefaultDeserializer } from 'v8';
 
 interface Lot{
   lot:lotModel;
 }
 
-export default function LotCard(props:Lot) {
+const LotCard =(props:Lot) => {
     return(
       <Wrapper>
         <div>
@@ -21,3 +22,5 @@ export default function LotCard(props:Lot) {
       </Wrapper>
     )
 }
+
+export default LotCard;

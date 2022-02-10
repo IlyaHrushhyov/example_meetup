@@ -3,7 +3,7 @@ import ListOfLots from './LotCard/ListOfLots';
 import {lotService} from '../../../services/lot-service'
 import lotModel from '../../../models/lotModel';
 
-const Center: FC = () => {
+const Center = () => {
     const [listOfLots, setLots] = useState<Array<lotModel>>([]);
 
     useEffect(() =>{

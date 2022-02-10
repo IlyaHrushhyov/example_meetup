@@ -20,7 +20,7 @@ interface SidebarProps {
 let qualities = ['Любое', 'Новое', 'Б/у'];
 let name = 'Состояние';
 
-const Sidebar: FC<SidebarProps> = () => {
+const Sidebar = () => {
     const [categories, setCategories] = useState<Array<categoryModel>>([]);
     const [subCategories, setSubCategories] = useState<Array<subCategoryModel>>([]);
 

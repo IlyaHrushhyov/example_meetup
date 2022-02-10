@@ -15,7 +15,7 @@ interface Props{
   subCategories: Array<subCategoryModel>
 }
 
-export default function PinnedSubheaderList(props: Props) {
+const PinnedSubheaderList = (props: Props) => {
 
   const [openId, setOpenId] = useState<string>();
 
@@ -62,3 +62,4 @@ export default function PinnedSubheaderList(props: Props) {
   );
 }
 
+export default PinnedSubheaderList;

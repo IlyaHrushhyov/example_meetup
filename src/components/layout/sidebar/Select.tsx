@@ -35,7 +35,7 @@ function getStyles(name: string, personName: string[], theme: Theme) {
   };
 }
 
-export default function MultipleSelect(props : Topic) {
+const MultipleSelect = (props : Topic) => {
   const theme = useTheme();
   const [personName, setPersonName] = React.useState<string[]>([]);
 
@@ -76,3 +76,5 @@ export default function MultipleSelect(props : Topic) {
     </div>
   );
 }
+
+export default MultipleSelect;

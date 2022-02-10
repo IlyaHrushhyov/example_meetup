@@ -6,7 +6,7 @@ import './Header.css'
 import './Button.css'
 import { Part } from './Part.styled';
 
-const Header:FC = () => {
+const Header = () => {
     return (
         <Part>
             <div className="flexbox-container gap">

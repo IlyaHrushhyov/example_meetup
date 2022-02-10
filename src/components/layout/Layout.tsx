@@ -1,24 +1,22 @@
-import { Box, Grid } from '@mui/material';
-import Ract, { FC } from 'react'
+import { Grid } from '@mui/material';
 import Header from './header/Header';
-import Sidebar from './sidebar/Sidebar';
 import './Layout.css'
-import Center from './center/Center';
+import MainPlate from './MainPlate';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
-const Layout: FC = ({ children }) => {
+const Layout = () => {
     return (
         <>
-            <Grid container spacing={2} marginX={50} marginTop={2}>
-                <Grid item xs={12}>
-                    <Header/>
-                </Grid>
-                <Grid item xs={1.5}>
-                    <Sidebar/>
-                </Grid>
-                <Grid item xs={10.5}>
-                    <Center/>
-                </Grid>
-            </Grid>
+            <Router>
+                    <Grid container spacing={2} marginX={50} marginTop={2}>
+                        <Grid item xs={12}>
+                            <Header/>
+                        </Grid>
+                        <Routes>
+                            <Route path="/mainPlate" element={<MainPlate/>}/>
+                        </Routes>
+                    </Grid>
+            </Router>
         </> 
     );
 }

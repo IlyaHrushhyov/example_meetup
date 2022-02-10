@@ -8,7 +8,7 @@ interface Props{
     lots:Array<lotModel>
 }
 
-export default function ListOfLots(props: Props) {
+const ListOfLots = (props: Props) => {
     return(
         <List>
             {props.lots.map((item)=>(
@@ -19,3 +19,5 @@ export default function ListOfLots(props: Props) {
         </List>
     )
 }
+
+export default ListOfLots;
