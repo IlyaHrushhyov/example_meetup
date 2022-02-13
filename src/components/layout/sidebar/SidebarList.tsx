@@ -1,14 +1,11 @@
-import * as React from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import ListSubheader from '@mui/material/ListSubheader';
-import {categoryService} from '../../../services/category-service'
-import { useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import categoryModel from '../../../models/categoryModel';
-import { Collapse, ListItemButton, ListItemIcon } from '@mui/material';
-import { ExpandLess, ExpandMore, StarBorder } from '@mui/icons-material';
+import { Collapse, ListItemButton} from '@mui/material';
 import subCategoryModel from '../../../models/subCategoryModel';
+import CurrentSubCategoryCtx from '../../contexts/CurrentSubCategory';
 
 interface Props{
   categories: Array<categoryModel>,
@@ -16,7 +13,7 @@ interface Props{
 }
 
 const PinnedSubheaderList = (props: Props) => {
-
+  const currentSubCategoryCtx = useContext(CurrentSubCategoryCtx);
   const [openId, setOpenId] = useState<string>();
 
   const handleClick = (id: string ) => {
@@ -37,24 +34,24 @@ const PinnedSubheaderList = (props: Props) => {
         }}
       >
 
-        {props.categories.map((item) => (
+        {props.categories.map((item: categoryModel) => (
                 <ListItem key={`listItem-${item.id}`}>
-                  
                   <div>
-                  <ListItemButton onClick={() => handleClick(item.id)}>
-                    <ListItemText key={`listItemText-${item.id}`} primary={`${item.name}`}>
-                    </ListItemText>
-                  </ListItemButton>
-                    {props.subCategories.map((subCategory) =>(
-                      <Collapse in={openId === item.id} timeout="auto" unmountOnExit>
-                        <List component="div" disablePadding>
-                          <ListItemButton sx={{ pl: 4 }}>
-                              <ListItemText key={`listItemText-${subCategory.id}`} primary={`${subCategory.name}`} />
-                          </ListItemButton>
-                        </List>
-                    </Collapse>
-                    ))}
-                    </div>
+                    <ListItemButton onClick={() => handleClick(item.id)}>
+                      <ListItemText key={`listItemText-${item.id}`} primary={`${item.name}`}>
+                      </ListItemText>
+                    </ListItemButton>
+                      {props.subCategories.map((subCategory: subCategoryModel) =>(
+                            subCategory.categoryId === item.id &&
+                              <Collapse in={openId === item.id} timeout="auto" unmountOnExit>
+                                <List component="div" disablePadding>
+                                  <ListItemButton sx={{ pl: 4 }} onClick={()=>currentSubCategoryCtx.setCurrentSubCategory(subCategory.id)}>
+                                      <ListItemText key={`listItemText-${subCategory.id}`} primary={`${subCategory.name}`} />
+                                  </ListItemButton>
+                                </List>
+                              </Collapse>
+                      ))}
+                  </div>
                 </ListItem>
         ))}
       </List>

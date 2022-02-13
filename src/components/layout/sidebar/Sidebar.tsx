@@ -1,35 +1,21 @@
-import { Box } from '@mui/system';
-import Ract, {FC, useEffect, useState} from 'react'
-import {Link} from 'react-router-dom'
+import {useContext} from 'react'
 import AllCategories from './SidebarList';
 import Filter from './Filter';
 import Select from './Select';
 import { Wrapper, PriceWrapper } from './SideBar.styled';
 import TextField from '@mui/material/TextField';
-import { Button } from '@mui/material';
+import { Button, Input } from '@mui/material';
 import FormLabel from '@mui/material/FormLabel';
-import categoryModel from '../../../models/categoryModel';
-import { categoryService } from '../../../services/category-service';
-import subCategoryModel from '../../../models/subCategoryModel';
-import {subCategoryService} from '../../../services/subCategory-service'
-
-interface SidebarProps {
-    
-}
+import CategoryCtx from '../../contexts/CategoryContext';
+import SubCategoryCtx from '../../contexts/SubCategoryContext';
 
 let qualities = ['Любое', 'Новое', 'Б/у'];
 let name = 'Состояние';
 
 const Sidebar = () => {
-    const [categories, setCategories] = useState<Array<categoryModel>>([]);
-    const [subCategories, setSubCategories] = useState<Array<subCategoryModel>>([]);
+    const {categories} = useContext(CategoryCtx);
+    const {subCategories} = useContext(SubCategoryCtx);
 
-    useEffect(() =>{
-        Promise.all([ 
-            subCategoryService.getAllSubCategories().then((response)=>setSubCategories(response.data)),
-            categoryService.getAllCategories().then((response)=>setCategories(response.data))
-        ])
-    }, [])
     return (
     <Wrapper>
         <div>
@@ -43,8 +29,9 @@ const Sidebar = () => {
             <Select topicName='Город'/>
         </div>
         <PriceWrapper>
-            <TextField id="outlined-basic" label="Цена от" variant="outlined" />
-            <TextField id="outlined-basic" label="Цена до" variant="outlined" />
+            <TextField id="outlined-basic" label="Цена от" variant="outlined" type="number">
+            </TextField>
+            <TextField id="outlined-basic" label="Цена до" variant="outlined" type="number"/>
         </PriceWrapper>
         <div>
             <Filter elements={qualities} topicName={name}/>

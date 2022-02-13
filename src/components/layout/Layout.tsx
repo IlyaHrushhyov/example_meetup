@@ -3,8 +3,10 @@ import Header from './header/Header';
 import './Layout.css'
 import MainPlate from './MainPlate';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import CreateLot from './center/CreateLot';
 
 const Layout = () => {
+    
     return (
         <>
             <Router>
@@ -13,7 +15,8 @@ const Layout = () => {
                             <Header/>
                         </Grid>
                         <Routes>
-                            <Route path="/mainPlate" element={<MainPlate/>}/>
+                            <Route path='/mainPlate' element={<MainPlate/>}/>
+                            <Route path='/createLot' element={<CreateLot/>}/>
                         </Routes>
                     </Grid>
             </Router>
