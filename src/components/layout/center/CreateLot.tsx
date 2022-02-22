@@ -13,7 +13,8 @@ const CreateLot = () => {
             <Grid item xs={11}>
                 <h1>Создание лота</h1>
                 <h2>Фотографии</h2>
-                <TextField id="outlined-basic" label="Название товара" variant="outlined" />
+                <TextField label="Название товара" />
+                <h2>Категория</h2>
                 <AllCategories categories={categories} subCategories={subCategories}/>
             </Grid>
         </> 

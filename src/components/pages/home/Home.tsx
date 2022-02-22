@@ -9,6 +9,7 @@ import SubCategoryCtx from '../../contexts/SubCategoryContext';
 import Layout from '../../layout/Layout';
 
 const Home = () => {
+    const [currentSubCategoryText, setCurrentSubCategoryText] = useState<string>('Все лоты');
     const [currentSubCategory, setCurrentSubCategory] = useState<string|number>(1);
     const [categories, setCategories] = useState<Array<categoryModel>>([]);
     const [subCategories, setSubCategories] = useState<Array<subCategoryModel>>([]);
@@ -18,7 +19,7 @@ const Home = () => {
     }, [])
     return (
        <>
-            <CurrentSubCategoryCtx.Provider value={{currentSubCategory:currentSubCategory, setCurrentSubCategory:setCurrentSubCategory}}>
+            <CurrentSubCategoryCtx.Provider value={{currentSubCategory:currentSubCategory, setCurrentSubCategory:setCurrentSubCategory, currentSubCategoryText:currentSubCategoryText, setCurrentSubCategoryText:setCurrentSubCategoryText}}>
                 <SubCategoryCtx.Provider value={{subCategories:subCategories}}>
                     <CategoryCtx.Provider value={{categories:categories}}>
                         <Layout/>

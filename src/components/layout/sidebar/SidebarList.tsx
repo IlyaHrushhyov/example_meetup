@@ -13,7 +13,7 @@ interface Props{
 }
 
 const PinnedSubheaderList = (props: Props) => {
-  const currentSubCategoryCtx = useContext(CurrentSubCategoryCtx);
+  const {setCurrentSubCategory, setCurrentSubCategoryText} = useContext(CurrentSubCategoryCtx);
   const [openId, setOpenId] = useState<string>();
 
   const handleClick = (id: string ) => {
@@ -45,7 +45,7 @@ const PinnedSubheaderList = (props: Props) => {
                             subCategory.categoryId === item.id &&
                               <Collapse in={openId === item.id} timeout="auto" unmountOnExit>
                                 <List component="div" disablePadding>
-                                  <ListItemButton sx={{ pl: 4 }} onClick={()=>currentSubCategoryCtx.setCurrentSubCategory(subCategory.id)}>
+                                  <ListItemButton sx={{ pl: 4 }} onClick={()=>{setCurrentSubCategory(subCategory.id); setCurrentSubCategoryText(subCategory.name)}}>
                                       <ListItemText key={`listItemText-${subCategory.id}`} primary={`${subCategory.name}`} />
                                   </ListItemButton>
                                 </List>

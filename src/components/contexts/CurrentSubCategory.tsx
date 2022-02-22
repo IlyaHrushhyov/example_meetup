@@ -1,18 +1,17 @@
 import React from "react";
 
-
-// interface ICurrentSubCategory{
-//     currentSubCategoryId: string|number
-// }
-
 interface ICurrentSubCategoryCtx{
+    currentSubCategoryText: string,
     currentSubCategory: string|number,
     setCurrentSubCategory: (subCategoryId: string|number) => void;
+    setCurrentSubCategoryText: (subCategoryText: string) => void;
 }
 
 const CurrentSubCategoryCtx = React.createContext<ICurrentSubCategoryCtx>({
     currentSubCategory: 1,
-    setCurrentSubCategory: ()=>{}
+    setCurrentSubCategory: ()=>{},
+    currentSubCategoryText: 'Все категории',
+    setCurrentSubCategoryText: ()=>{}
 });
 
 export default CurrentSubCategoryCtx;
