@@ -6,6 +6,7 @@ import categoryModel from '../../../models/categoryModel';
 import { Collapse, ListItemButton} from '@mui/material';
 import subCategoryModel from '../../../models/subCategoryModel';
 import CurrentSubCategoryCtx from '../../contexts/CurrentSubCategory';
+import SearchContext from '../../contexts/SearchContext';
 
 interface Props{
   categories: Array<categoryModel>,
@@ -14,6 +15,7 @@ interface Props{
 
 const PinnedSubheaderList = (props: Props) => {
   const {setCurrentSubCategory, setCurrentSubCategoryText} = useContext(CurrentSubCategoryCtx);
+  const {setSearchText} = useContext(SearchContext);
   const [openId, setOpenId] = useState<string>();
 
   const handleClick = (id: string ) => {
@@ -45,7 +47,7 @@ const PinnedSubheaderList = (props: Props) => {
                             subCategory.categoryId === item.id &&
                               <Collapse in={openId === item.id} timeout="auto" unmountOnExit>
                                 <List component="div" disablePadding>
-                                  <ListItemButton sx={{ pl: 4 }} onClick={()=>{setCurrentSubCategory(subCategory.id); setCurrentSubCategoryText(subCategory.name)}}>
+                                  <ListItemButton sx={{ pl: 4 }} onClick={()=>{setCurrentSubCategory(subCategory.id); setCurrentSubCategoryText(subCategory.name);  setSearchText('')}}>
                                       <ListItemText key={`listItemText-${subCategory.id}`} primary={`${subCategory.name}`} />
                                   </ListItemButton>
                                 </List>

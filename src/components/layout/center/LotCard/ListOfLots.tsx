@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import List from '@mui/material/List';
 import lotModel from '../../../../models/lotModel';
 import LotCard from './LotCard';
@@ -10,17 +10,10 @@ interface Props{
 }
 
 const ListOfLots = (props: Props) => {
-    const currentSubCategoryCtx = useContext(CurrentSubCategoryCtx);
-    let lots = [];
-    if(currentSubCategoryCtx.currentSubCategory === 1){
-        lots = props.lots;
-    }
-    else{
-        lots = props.lots.filter((lot)=> lot.subCategoryId === currentSubCategoryCtx.currentSubCategory);
-    }
+
     return(
         <List>
-            {lots.map((item)=>(
+            {props.lots.map((item)=>(
                 <ListItem>
                     <LotCard lot={item}/>
                 </ListItem>

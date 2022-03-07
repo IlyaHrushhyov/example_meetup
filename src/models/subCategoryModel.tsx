@@ -1,5 +1,5 @@
 export default interface subCategoryModel {
-    id: number | string,
+    id: string,
     name: string,
-    categoryId: number | string
+    categoryId: string
 }
