@@ -1,7 +1,7 @@
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import categoryModel from '../../../models/categoryModel';
 import { Collapse, ListItemButton} from '@mui/material';
 import subCategoryModel from '../../../models/subCategoryModel';
@@ -18,6 +18,7 @@ const PinnedSubheaderList = (props: Props) => {
   const {setSearchText} = useContext(SearchContext);
   const [openId, setOpenId] = useState<string>();
 
+  
   const handleClick = (id: string ) => {
     (openId === id) ? setOpenId("0") : setOpenId(id);
   };

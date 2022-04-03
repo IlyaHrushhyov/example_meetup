@@ -11,7 +11,7 @@ import { useState } from 'react';
 import { Select } from '@mui/material';
 
 interface Props{
-  items:Array<cityModel|regionModel>,
+  items:Array<cityModel>,
   topicName:string
 }
 
